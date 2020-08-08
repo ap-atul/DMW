@@ -4,7 +4,7 @@ import numpy as np
 
 TOL = 0.001
 ITER = 30
-CLUSTER = 3
+CLUSTER = 2
 
 class K_Means:
     def __init__(self, k=CLUSTER, tol=TOL, max_iter=ITER):
@@ -74,12 +74,13 @@ for i in range(150):
 plt.show()
 
 for centroid in clf.centroids:
-    print(clf.centroids[centroid][0], " ", clf.centroids[centroid][1])
+    print(clf.centroids[centroid][0], " ", clf.centroids[centroid][1], " ", clf.centroids[centroid][2], " ", clf.centroids[centroid][3])
     plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1],
                 marker="*", color="k", s=150, linewidths=5)
     
 for classification in clf.classifications:
     color = colors[classification]
+    color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[0], featureset[1],
                     marker="2", color=color, s=150, linewidths=5)

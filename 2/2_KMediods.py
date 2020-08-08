@@ -5,7 +5,7 @@ from scipy import stats
 
 TOL = 0.001
 ITER = 30
-CLUSTER = 3
+CLUSTER = 2
 
 # random no generator for 2D array
 def _random(bound,size):
@@ -34,7 +34,11 @@ class K_Mediods:
         _med = _random(len(data),self.k)
         
         for i in range(self.k):
-            self.medoids[i] = data[_med[i]]
+            ## taking random
+            self.medoids[i] = data[_med[i]]  
+
+            ## taking average
+            # self.medoids[i] = np.average(data[i], axis=0)
             print(self.medoids[i])
 
         # intializing the medoids to 1st 3 ele
@@ -84,7 +88,7 @@ class K_Mediods:
 ############################################################
 # Driver code
 # Reading the first 2 cols of the dataset
-X = pd.read_csv("iris.csv", header = None, usecols = [0, 1])
+X = pd.read_csv("iris.csv", header = None, usecols = [0, 1, 2, 3])
 colors = ['r', 'g', 'b', 'c', 'k', 'o', 'y']
 
 clf = K_Mediods()
