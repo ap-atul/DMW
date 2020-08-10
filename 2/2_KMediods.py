@@ -41,12 +41,6 @@ class K_Mediods:
             # self.medoids[i] = np.average(data[i], axis=0)
             print(self.medoids[i])
 
-        # intializing the medoids to 1st 3 ele
-        #     self.medoids[i] = data[i]
-        #      print(self.medoids)
-        # for i in range(self.k):
-        #     self.medoids[i] = data[mean]
-
         # iterate for max _iterations
         for i in range(self.max_iter):
             self.classifications = {}
@@ -56,31 +50,12 @@ class K_Mediods:
 
             # create cluster & cal Euclidean distance
             for featureset in data:
-                distances = [np.linalg.norm(featureset - self.medoids[centroid]) for centroid in self.medoids]
+                distances = [np.linalg.norm(featureset - self.medoids[medoid]) for medoid in self.medoids]
                 classification = distances.index(min(distances))
                 self.classifications[classification].append(featureset)
 
-            # prev_centroids = dict(self.medoids)
-
-            # recal mean/centroid
-            # for classification in self.classifications:
-            #     self.medoids[classification] = np.average(self.classifications[classification], axis=0)
-            
-            # optimized = True
-
-            # check for tolerance
-            # for c in self.medoids:
-            #     current_centroi = self.medoids[c]
-            #     if np.sum((current_centroi - original_centroid) / original_centroid * 100.0) > self.tol:
-            #         print("New centroid :: " , np.sum((current_centroi - original_centroid) / original_centroid * 100.0))
-            #         optimized = False
-
-            # if optimized:
-            #     break
-
-
     def predict(self, data):
-        distances = [np.linalg.norm(data - self.medoids[centroid]) for centroif in self.medoids]
+        distances = [np.linalg.norm(data - self.medoids[medoid]) for medoid in self.medoids]
         classification = distances.index(min(distances))
         return classification
 
@@ -97,16 +72,34 @@ clf.fit(np.array(X))
 for i in range(150):
     plt.scatter(np.array(X)[i][0], np.array(X)[i][1], 
     color="r", marker="*")
+    plt.scatter(np.array(X)[i][2], np.array(X)[i][3], 
+    color="r", marker="*")
 plt.show()
 
-for centroid in clf.medoids:
-    plt.scatter(clf.medoids[centroid][0], clf.medoids[centroid][1],
+# for sepals
+for medoids in clf.medoids:
+    plt.scatter(clf.medoids[medoids][0], clf.medoids[medoids][1],
                 marker="*", color="k", s=150, linewidths=5)
     
 for classification in clf.classifications:
     color = colors[classification]
+    color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[0], featureset[1],
                     marker="2", color=color, s=150, linewidths=5)
+                
+plt.show()
 
+# for petals
+for medoids in clf.medoids:
+    plt.scatter(clf.medoids[medoids][2], clf.medoids[medoids][3],
+                marker="*", color="k", s=150, linewidths=5)
+    
+for classification in clf.classifications:
+    color = colors[classification]
+    color1 = colors[classification + 1]
+    for featureset in clf.classifications[classification]:
+        plt.scatter(featureset[2], featureset[3],
+                    marker="2", color=color, s=150, linewidths=5)
+                
 plt.show()

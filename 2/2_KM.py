@@ -71,10 +71,12 @@ clf.fit(np.array(X))
 for i in range(150):
     plt.scatter(np.array(X)[i][0], np.array(X)[i][1], 
     color="r", marker="*")
+    plt.scatter(np.array(X)[i][2], np.array(X)[i][3], 
+    color="r", marker="*")
 plt.show()
 
+# for sepals from dset
 for centroid in clf.centroids:
-    print(clf.centroids[centroid][0], " ", clf.centroids[centroid][1], " ", clf.centroids[centroid][2], " ", clf.centroids[centroid][3])
     plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1],
                 marker="*", color="k", s=150, linewidths=5)
     
@@ -83,6 +85,20 @@ for classification in clf.classifications:
     color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[0], featureset[1],
+                    marker="2", color=color, s=150, linewidths=5)
+                
+plt.show()
+
+# for petals from dset
+for centroid in clf.centroids:
+    plt.scatter(clf.centroids[centroid][2], clf.centroids[centroid][3],
+                marker="*", color="k", s=150, linewidths=5)
+
+for classification in clf.classifications:
+    color = colors[classification]
+    color1 = colors[classification + 1]
+    for featureset in clf.classifications[classification]:
+        plt.scatter(featureset[2], featureset[3],
                     marker="2", color=color, s=150, linewidths=5)
 
 plt.show()
