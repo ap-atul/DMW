@@ -60,6 +60,7 @@ class K_Mediods:
         return classification
 
 
+
 ############################################################
 # Driver code
 # Reading the first 2 cols of the dataset
@@ -109,7 +110,7 @@ for classification in clf.classifications:
 for medoids in clf.medoids:
     plt.scatter(clf.medoids[medoids][2], clf.medoids[medoids][3],
                 marker="*", color="b", s=100, linewidths=5)
-         
+
 plt.xlabel("Petals Length")
 plt.ylabel("Petals Width")
 plt.title("Petals")       
