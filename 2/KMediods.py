@@ -4,7 +4,7 @@ import numpy as np
 from scipy import stats
 
 TOL = 0.001
-ITER = 30
+ITER = 300
 CLUSTER = 2
 
 # random no generator for 2D array
@@ -74,32 +74,43 @@ for i in range(150):
     color="r", marker="*")
     plt.scatter(np.array(X)[i][2], np.array(X)[i][3], 
     color="r", marker="*")
+
+plt.xlabel("Sepal")
+plt.ylabel("Petal")
+plt.title("Iris Dataset")
 plt.show()
+
 
 # for sepals
-for medoids in clf.medoids:
-    plt.scatter(clf.medoids[medoids][0], clf.medoids[medoids][1],
-                marker="*", color="k", s=150, linewidths=5)
-    
 for classification in clf.classifications:
     color = colors[classification]
-    color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[0], featureset[1],
-                    marker="2", color=color, s=150, linewidths=5)
+                    marker=".", color=color, linewidths=5)
+                 
+for medoids in clf.medoids:
+    plt.scatter(clf.medoids[medoids][0], clf.medoids[medoids][1],
+                marker="*", color="b", s=100, linewidths=5)
                 
+plt.xlabel("Sepals Length")
+plt.ylabel("Sepals Width")
+plt.title("Sepals")
 plt.show()
 
-# for petals
-for medoids in clf.medoids:
-    plt.scatter(clf.medoids[medoids][2], clf.medoids[medoids][3],
-                marker="*", color="k", s=150, linewidths=5)
-    
+
+# for petals    
 for classification in clf.classifications:
     color = colors[classification]
     color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[2], featureset[3],
-                    marker="2", color=color, s=150, linewidths=5)
-                
+                    marker=".", color=color, linewidths=5)
+                         
+for medoids in clf.medoids:
+    plt.scatter(clf.medoids[medoids][2], clf.medoids[medoids][3],
+                marker="*", color="b", s=100, linewidths=5)
+         
+plt.xlabel("Petals Length")
+plt.ylabel("Petals Width")
+plt.title("Petals")       
 plt.show()

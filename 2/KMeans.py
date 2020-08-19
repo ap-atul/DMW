@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 TOL = 0.001
-ITER = 30
+ITER = 300
 CLUSTER = 2
 
 class K_Means:
@@ -68,37 +68,43 @@ colors = ['r', 'g', 'b', 'c', 'k', 'o', 'y']
 clf = K_Means()
 clf.fit(np.array(X))
 
-for i in range(150):
+for i in range(len(X)):
     plt.scatter(np.array(X)[i][0], np.array(X)[i][1], 
     color="r", marker="*")
     plt.scatter(np.array(X)[i][2], np.array(X)[i][3], 
     color="r", marker="*")
 plt.show()
 
-# for sepals from dset
-for centroid in clf.centroids:
-    plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1],
-                marker="*", color="k", s=150, linewidths=5)
-    
+# for sepals
 for classification in clf.classifications:
     color = colors[classification]
-    color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[0], featureset[1],
-                    marker="2", color=color, s=150, linewidths=5)
+                    marker=".", color=color, linewidths=5)
+                 
+for centroid in clf.centroids:
+    plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1],
+                marker="*", color="b", s=100, linewidths=5)
                 
+plt.xlabel("Sepals Length")
+plt.ylabel("Sepals Width")
+plt.title("Sepals")
 plt.show()
 
-# for petals from dset
-for centroid in clf.centroids:
-    plt.scatter(clf.centroids[centroid][2], clf.centroids[centroid][3],
-                marker="*", color="k", s=150, linewidths=5)
 
+# for petals    
 for classification in clf.classifications:
     color = colors[classification]
     color1 = colors[classification + 1]
     for featureset in clf.classifications[classification]:
         plt.scatter(featureset[2], featureset[3],
-                    marker="2", color=color, s=150, linewidths=5)
-
+                    marker=".", color=color, linewidths=5)
+                         
+for centroid in clf.centroids:
+    plt.scatter(clf.centroids[centroid][2], clf.centroids[centroid][3],
+                marker="*", color="b", s=100, linewidths=5)
+         
+plt.xlabel("Petals Length")
+plt.ylabel("Petals Width")
+plt.title("Petals")       
 plt.show()
