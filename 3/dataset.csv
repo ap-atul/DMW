@@ -1,0 +1,9 @@
+laptop,gpu,rgb
+mobile,headphones,gpu
+gpu,bulb,laptop
+laptop,rgb
+rgb,gpu
+laptop,mobile
+bulb,rgb
+rgb,gpu
+mobile,rgb,gpu,laptop
