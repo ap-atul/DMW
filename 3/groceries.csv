@@ -1,0 +1,8 @@
+milk,butter,icecream
+apple,mango
+apple,butter,bread
+bread,butter
+bread,milk,butter
+icecream,bread,milk
+milk,eggs,butter
+butter,eggs,icecream

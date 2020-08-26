@@ -85,11 +85,7 @@ def runApriori(data, minSupport, minConfidence):
     freqSet = defaultdict(int)
     largeSet = dict()
 
-    # dictionary to store association rules
-    assocRules = dict()
-
     oneCSet = returnItemsWithMinSupport(itemSet, transactionList, minSupport, freqSet)
-
     currentLSet = oneCSet
     k = 2
 
@@ -135,14 +131,14 @@ def printResults(items, rules):
     :return: None
     """
 
-    print("\n************  Items  *************\n")
+    print("\n************  Items & Support  *************\n")
     for item, support in sorted(items, key=lambda x: x[1], reverse=True):
-        print("item : { %s } , %.3f" % (str(item), support))
+        print("Item : { %s } , %.3f " % (str(item), support * 100))
 
-    print("\n************  Rules  *************\n")
+    print("\n************  Rules & Confidences *************\n")
     for rule, confidence in sorted(rules, key=lambda c: c[1], reverse=True):
         pre, post = rule
-        print("Rule { %s } ---> { %s } , %.3f" % (str(pre), str(post), confidence))
+        print("Rule { %s } ---> { %s } , %.3f " % (str(pre), str(post), confidence * 100))
 
 
 def dataFromFile(fileName):

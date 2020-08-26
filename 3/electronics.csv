@@ -1,0 +1,9 @@
+gpu,laptop,mobile
+mobile
+mobile,gpu
+laptop,mobile
+mobile,gpu,mouse
+mouse,gpu
+mouse,gou,laptop
+laptop,gpu,mouse
+gpu,mobile,mouse
