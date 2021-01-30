@@ -23,7 +23,7 @@ class KMeans:
             print(self.centroids)
 
         # iterate for max _iterations
-        for i in range(self.max_iter):
+        for _ in range(self.max_iter):
 
             for i in range(self.k):
                 self.classifications[i] = []
@@ -54,7 +54,7 @@ class KMeans:
                 break
 
     def predict(self, data):
-        distances = [np.linalg.norm(data - self.centroids[centroid]) for centroif in self.centroids]
+        distances = [np.linalg.norm(data - self.centroids[centroid]) for _ in self.centroids]
         classification = distances.index(min(distances))
         return classification
 

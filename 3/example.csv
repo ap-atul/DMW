@@ -1,9 +1,5 @@
-l1,l2,l5
-l2,l4
-l2,l3
-l1,l2,l4
-l1,l3
-l2,l3
-l1,l3
-l1,l2,l3,l5
-l1,l2,l3
+I1,I2,I3,I4,I5,I6 
+I7,I2,I3,I4,I5,I6 
+I1,I8,I4,I5
+I1,I9,I10,I4,I6 
+I10,I2,I4,I11,I5
